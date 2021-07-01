@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout xmlns:ohos="http://schemas.huawei.com/res/ohos"
+                   ohos:id="$+id:root"
+                   ohos:width="match_parent"
+                   ohos:height="match_parent"
+                   ohos:orientation="vertical">
+
+    <TextField
+        ohos:id="$+id:tf_email"
+        ohos:width="match_parent"
+        ohos:height="match_content"
+        ohos:hint="E-mail address"
+        ohos:text_size="25fp"/>
+
+<!--    ohos:text="@={viewModel.email.value}"-->
+
+    <Button
+        ohos:id="$+id:btn_submit"
+        ohos:height="match_parent"
+        ohos:width="match_content"
+        ohos:text="Submit"
+        ohos:text_size="25fp"/>
+
+</DirectionalLayout>

@@ -1,0 +1,23 @@
+{
+  "app": {
+    "bundleName": "com.applib.libraryvalifi",
+    "vendor": "applib",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+  },
+  "module": {
+    "package": "com.applib.valifilib",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "valifilib",
+      "moduleType": "har"
+    }
+  }
+}
