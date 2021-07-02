@@ -12,7 +12,31 @@
         ohos:hint="E-mail address"
         ohos:text_size="25fp"/>
 
-<!--    ohos:text="@={viewModel.email.value}"-->
+    <TextField
+        ohos:id="$+id:tf_password"
+        ohos:width="match_parent"
+        ohos:height="match_content"
+        ohos:hint="Password"
+        ohos:text_input_type="pattern_password"
+        ohos:text_size="25fp"/>
+
+    <TextField
+        ohos:id="$+id:tf_password2"
+        ohos:width="match_parent"
+        ohos:height="match_content"
+        ohos:hint="Verify Password"
+        ohos:text_input_type="pattern_password"
+        ohos:text_size="25fp"/>
+
+    <TextField
+        ohos:id="$+id:tf_phone"
+        ohos:width="match_parent"
+        ohos:height="match_content"
+        ohos:hint="Phone (not mandatory)"
+        ohos:text_input_type="pattern_number"
+        ohos:text_size="25fp"/>
+
+    <!--    ohos:text="@={viewModel.email.value}"-->
 
     <Button
         ohos:id="$+id:btn_submit"

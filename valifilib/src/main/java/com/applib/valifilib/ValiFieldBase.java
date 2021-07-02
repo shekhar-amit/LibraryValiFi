@@ -47,6 +47,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 //	@Nullable private ScheduledExecutorService mScheduler;
 //	protected OnPropertyChangedCallback mCallback = setupOnPropertyChangedCallback();
 //	final Runnable mNotifyErrorRunnable = setupNotifyErrorRunnable();
+	protected TextField mTextField;
 
 	public interface PropertyValidator<T> {
 		/**
@@ -185,11 +186,21 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 //	@Bindable
 	@Override
 	public boolean isValid() {
-		System.out.println("AMIT : isValid");
-		checkBlockingValidators();
-		System.out.println("AMIT : mInprogress " + mInProgress + " mIsError " + mIsError
-		+ " mIsChanged " + mIsChanged + " mIsEmptyAllowed "+mIsEmptyAllowed);
+		if(mTextField==null) return false;
+		setValue(mTextField.getText());
+//		System.out.println("AMIT : isValid");
+		checkAllValidators();
+//		System.out.println("AMIT : mInprogress " + mInProgress + " mIsError " + mIsError
+//		+ " mIsChanged " + mIsChanged + " mIsEmptyAllowed "+mIsEmptyAllowed);
 		return !mInProgress & !mIsError & (mIsChanged | mIsEmptyAllowed);
+	}
+
+	public void checkAllValidators() {
+		if (mIsEmptyAllowed && (mValue == null || whenThisFieldIsEmpty(mValue))) {
+			setIsError(false, null);
+			return;
+		}
+		checkBlockingValidators();
 	}
 
 	/**
@@ -377,6 +388,10 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	@Override
 	public void setFormValidation(@Nullable ValiFiForm form) {
 		mParentForm = form;
+	}
+
+	public void setTextField(TextField textField){
+		mTextField = textField;
 	}
 
 	@Nullable
