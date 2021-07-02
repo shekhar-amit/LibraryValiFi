@@ -185,6 +185,10 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 //	@Bindable
 	@Override
 	public boolean isValid() {
+		System.out.println("AMIT : isValid");
+		checkBlockingValidators();
+		System.out.println("AMIT : mInprogress " + mInProgress + " mIsError " + mIsError
+		+ " mIsChanged " + mIsChanged + " mIsEmptyAllowed "+mIsEmptyAllowed);
 		return !mInProgress & !mIsError & (mIsChanged | mIsEmptyAllowed);
 	}
 
@@ -667,24 +671,24 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 //		mLastValidationFuture = task;
 //	}
 //
-//	/**
-//	 * Checks synchronous validators one by one and sets error to the field if any of them is invalid
-//	 *
-//	 * @return true if all validators are valid, false if any of them is invalid
-//	 */
-//	boolean checkBlockingValidators() {
-//		for (Map.Entry<PropertyValidator<ValueType>, String> entry : mPropertyValidators.entrySet()) {
-//			// all of setup validators must be valid, otherwise error
-//			if (!entry.getKey().isValid(mValue)) {
-//				setIsError(true, entry.getValue());
-//				return false;
-//			}
-//		}
-//
-//		// set valid
-//		setIsError(false, null);
-//		return true;
-//	}
+	/**
+	 * Checks synchronous validators one by one and sets error to the field if any of them is invalid
+	 *
+	 * @return true if all validators are valid, false if any of them is invalid
+	 */
+	boolean checkBlockingValidators() {
+		for (Map.Entry<PropertyValidator<ValueType>, String> entry : mPropertyValidators.entrySet()) {
+			// all of setup validators must be valid, otherwise error
+			if (!entry.getKey().isValid(mValue)) {
+				setIsError(true, entry.getValue());
+				return false;
+			}
+		}
+
+		// set valid
+		setIsError(false, null);
+		return true;
+	}
 //
 //	/**
 //	 * Checks asynchronously all async validators and sets error to the field if any of them is invalid
