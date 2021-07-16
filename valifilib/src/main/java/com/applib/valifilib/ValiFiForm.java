@@ -34,6 +34,15 @@ public class ValiFiForm implements ValiFiValidable {
 		return true;
 	}
 
+	@Override
+	public void init() {
+		System.out.println("AMIT : INIT FORM");
+		for (ValiFiValidable field : mFields) {
+			field.init();
+		}
+	}
+
+
 	/**
 	 * Clears used resources by this form + clears validated field's resources.
 	 * Should be called after done working with form and fields

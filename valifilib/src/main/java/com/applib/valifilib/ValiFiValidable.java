@@ -14,6 +14,7 @@ public interface ValiFiValidable {
 //	@Bindable
 	boolean isValid();
 
+	void init();
 	/**
 	 * So that form or field can be destroyed the same way
 	 */

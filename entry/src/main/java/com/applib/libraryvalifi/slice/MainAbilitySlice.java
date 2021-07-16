@@ -10,6 +10,7 @@ import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Button;
 import ohos.agp.components.Component;
+import ohos.agp.components.Text;
 import ohos.agp.components.TextField;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.hiviewdfx.HiLog;
@@ -21,6 +22,10 @@ public class MainAbilitySlice extends AbilitySlice {
     TextField tf_password;
     TextField tf_password2;
     TextField tf_phone;
+    Text err_email;
+    Text err_password;
+    Text err_password2;
+    Text err_phone;
     Button btn_submit;
     private static final int DOMAIN = 0x00101;
     private static final String TAG = "Databinding";
@@ -37,17 +42,35 @@ public class MainAbilitySlice extends AbilitySlice {
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
+
         phone.setEmptyAllowed(true);
+
         tf_email = (TextField) findComponentById(ResourceTable.Id_tf_email);
         tf_password = (TextField) findComponentById(ResourceTable.Id_tf_password);
         tf_password2 = (TextField) findComponentById(ResourceTable.Id_tf_password2);
         tf_phone = (TextField) findComponentById(ResourceTable.Id_tf_phone);
+
+        err_email = (Text) findComponentById(ResourceTable.Id_err_email);
+        err_password = (Text) findComponentById(ResourceTable.Id_err_password);
+        err_password2 = (Text) findComponentById(ResourceTable.Id_err_password2);
+        err_phone = (Text) findComponentById(ResourceTable.Id_err_phone);
+
         btn_submit = (Button) findComponentById(ResourceTable.Id_btn_submit);
+
         password2.addVerifyFieldValidator("Passwords must be the same", password);
+
         email.setTextField(tf_email);
         password.setTextField(tf_password);
         password2.setTextField(tf_password2);
         phone.setTextField(tf_phone);
+
+        email.setErrorText(err_email);
+        password.setErrorText(err_password);
+        password2.setErrorText(err_password2);
+        phone.setErrorText(err_phone);
+
+        form.init();
+
         btn_submit.setClickedListener(new Component.ClickedListener() {
             @Override
             public void onClick(Component component) {

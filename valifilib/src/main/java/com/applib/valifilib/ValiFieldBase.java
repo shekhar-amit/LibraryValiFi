@@ -2,7 +2,10 @@ package com.applib.valifilib;
 
 import com.applib.valifilib.exceptions.ValiFiException;
 import com.applib.valifilib.exceptions.ValiFiValidatorException;
+import ohos.agp.components.Component;
+import ohos.agp.components.Text;
 import ohos.agp.components.TextField;
+import ohos.multimodalinput.event.KeyEvent;
 import org.jetbrains.annotations.*;
 
 import java.util.ArrayList;
@@ -48,6 +51,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 //	protected OnPropertyChangedCallback mCallback = setupOnPropertyChangedCallback();
 //	final Runnable mNotifyErrorRunnable = setupNotifyErrorRunnable();
 	protected TextField mTextField;
+	protected Text mErrorText;
 
 	public interface PropertyValidator<T> {
 		/**
@@ -201,6 +205,31 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 			return;
 		}
 		checkBlockingValidators();
+	}
+
+	@Override
+	public void init() {
+		if(mTextField==null || mErrorText==null) return;
+		boolean debugError = true;
+		System.out.println("AMIT : INIT FIELD");
+		Text.TextObserver mTextObserver = new Text.TextObserver() {
+			@Override
+			public void onTextUpdated(String s, int i, int i1, int i2) {
+				if(isValid()){
+					mErrorText.setVisibility(Component.HIDE);
+					mErrorText.setText("");
+				}
+				else{
+					mErrorText.setVisibility(Component.VISIBLE);
+					if(debugError)
+						mErrorText.setText(mError);
+					else
+						mErrorText.setText("Invalid");
+					System.out.println("AMIT : IT IS INVALID");
+				}
+			}
+		};
+		mTextField.addTextObserver(mTextObserver);
 	}
 
 	/**
@@ -392,6 +421,10 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 
 	public void setTextField(TextField textField){
 		mTextField = textField;
+	}
+
+	public void setErrorText(Text text) {
+		mErrorText = text;
 	}
 
 	@Nullable
