@@ -1,6 +1,10 @@
 {
   "string": [
     {
+      "name": "app_name",
+      "value": "Sample App"
+    },
+    {
       "name": "entry_MainAbility",
       "value": "entry_MainAbility"
     },
@@ -10,6 +14,14 @@
     },
     {
       "name": "mainability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "testability_description",
+      "value": "Java_Phone_Empty Feature Ability"
+    },
+    {
+      "name": "testability_HelloWorld",
       "value": "Hello World"
     }
   ]

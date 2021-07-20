@@ -35,19 +35,37 @@ public class ValiFieldDate extends ValiFieldBase<Calendar> {
 		return DateFormat.getDateInstance().format(value.getTime());
 	}
 
+//	@Override
+//	@Nullable
+//	protected Calendar convertStringToValue(@Nullable String value) {
+//		Calendar calendar = Calendar.getInstance();
+//		try {
+//			calendar.setTime(DateFormat.getDateInstance().parse(value));
+//		} catch (ParseException e) {
+//			// TODO solve
+//			e.printStackTrace();
+//		}
+//
+//		return calendar;
+//	}
 	@Override
 	@Nullable
 	protected Calendar convertStringToValue(@Nullable String value) {
-		Calendar calendar = Calendar.getInstance();
+		if(value==null) return null;
+		String[] arrval = value.split("-|\\/");
+		if(arrval.length!=3) return null;
+		int yr = Integer.parseInt(arrval[2]);
+		int mo = Integer.parseInt(arrval[1]);;
+		int day = Integer.parseInt(arrval[0]);;
+		Calendar cal = null;
 		try {
-			calendar.setTime(DateFormat.getDateInstance().parse(value));
-		} catch (ParseException e) {
-			// TODO solve
+			cal = new Calendar.Builder().setDate(yr, mo, day).build();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return calendar;
+		return cal;
 	}
+
 
 	// ------------------ OLDER THAN VALIDATOR ------------------ //
 
@@ -69,8 +87,20 @@ public class ValiFieldDate extends ValiFieldBase<Calendar> {
 			public boolean isValid(@Nullable Calendar value) {
 				return value != null && value.compareTo(wantedDate) < 0;
 			}
+//			@Override
+//			public boolean isValid(@Nullable String value) {
+//				if(value==null) return false;
+//				String[] arrval = value.split("-|\\/");
+//				if(arrval.length!=3) return false;
+//				int yr = Integer.parseInt(arrval[2]);
+//				int mo = Integer.parseInt(arrval[1]);;
+//				int day = Integer.parseInt(arrval[0]);;
+//				Calendar cal = new Calendar.Builder().setDate(yr,mo,day).build();
+//				return cal != null && cal.compareTo(wantedDate) < 0;
+//			}
 		});
 
 		return this;
 	}
 }
+

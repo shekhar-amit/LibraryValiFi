@@ -7,7 +7,7 @@
       "name": "1.0.0"
     },
     "apiVersion": {
-      "compatible":5
+      "compatible": 5
     }
   },
   "deviceConfig": {},
@@ -41,6 +41,15 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.applib.libraryvalifi.TestAbility",
+        "icon": "$media:icon",
+        "description": "$string:testability_description",
+        "label": "$string:app_name",
         "type": "page",
         "launchType": "standard"
       }

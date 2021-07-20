@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DirectionalLayout xmlns:ohos="http://schemas.huawei.com/res/ohos"
-                   ohos:id="$+id:root"
-                   ohos:width="match_parent"
-                   ohos:height="match_parent"
-                   ohos:orientation="vertical">
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:root"
+    ohos:width="match_parent"
+    ohos:height="match_parent"
+    ohos:orientation="vertical"
+    ohos:padding="10fp">
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="Email"
+        ohos:text_size="15fp"/>
 
     <TextField
         ohos:id="$+id:tf_email"
         ohos:width="match_parent"
         ohos:height="match_content"
         ohos:hint="E-mail address"
-
         ohos:text_size="25fp"/>
 
     <Text
@@ -21,6 +28,12 @@
         ohos:text_color="$ohos:color:id_color_badge_red"
         ohos:visibility="hide"
         />
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="Password"
+        ohos:text_size="15fp"/>
 
     <TextField
         ohos:id="$+id:tf_password"
@@ -39,6 +52,12 @@
         ohos:visibility="hide"
         />
 
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="Confirm Password"
+        ohos:text_size="15fp"/>
+
     <TextField
         ohos:id="$+id:tf_password2"
         ohos:width="match_parent"
@@ -55,6 +74,12 @@
         ohos:text_color="$ohos:color:id_color_badge_red"
         ohos:visibility="hide"
         />
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="Phone Number"
+        ohos:text_size="15fp"/>
 
     <TextField
         ohos:id="$+id:tf_phone"
@@ -73,13 +98,18 @@
         ohos:visibility="hide"
         />
 
-    <!--    ohos:text="@={viewModel.email.value}"-->
-
     <Button
         ohos:id="$+id:btn_submit"
-        ohos:height="match_parent"
+        ohos:height="match_content"
         ohos:width="match_content"
         ohos:text="Submit"
+        ohos:text_size="25fp"/>
+
+    <Button
+        ohos:id="$+id:btn_test"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="Test Form"
         ohos:text_size="25fp"/>
 
 </DirectionalLayout>

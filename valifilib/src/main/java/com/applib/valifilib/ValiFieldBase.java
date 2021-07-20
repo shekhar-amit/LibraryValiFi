@@ -192,10 +192,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	public boolean isValid() {
 		if(mTextField==null) return false;
 		setValue(mTextField.getText());
-//		System.out.println("AMIT : isValid");
 		checkAllValidators();
-//		System.out.println("AMIT : mInprogress " + mInProgress + " mIsError " + mIsError
-//		+ " mIsChanged " + mIsChanged + " mIsEmptyAllowed "+mIsEmptyAllowed);
 		return !mInProgress & !mIsError & (mIsChanged | mIsEmptyAllowed);
 	}
 
@@ -211,7 +208,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	public void init() {
 		if(mTextField==null || mErrorText==null) return;
 		boolean debugError = true;
-		System.out.println("AMIT : INIT FIELD");
 		Text.TextObserver mTextObserver = new Text.TextObserver() {
 			@Override
 			public void onTextUpdated(String s, int i, int i1, int i2) {
@@ -225,7 +221,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 						mErrorText.setText(mError);
 					else
 						mErrorText.setText("Invalid");
-					System.out.println("AMIT : IT IS INVALID");
 				}
 			}
 		};

@@ -27,6 +27,7 @@ public class MainAbilitySlice extends AbilitySlice {
     Text err_password2;
     Text err_phone;
     Button btn_submit;
+    Button btn_test;
     private static final int DOMAIN = 0x00101;
     private static final String TAG = "Databinding";
     protected static final HiLogLabel LABEL = new HiLogLabel(HiLog.LOG_APP, DOMAIN, TAG);
@@ -56,6 +57,7 @@ public class MainAbilitySlice extends AbilitySlice {
         err_phone = (Text) findComponentById(ResourceTable.Id_err_phone);
 
         btn_submit = (Button) findComponentById(ResourceTable.Id_btn_submit);
+        btn_test = (Button) findComponentById(ResourceTable.Id_btn_test);
 
         password2.addVerifyFieldValidator("Passwords must be the same", password);
 
@@ -77,6 +79,8 @@ public class MainAbilitySlice extends AbilitySlice {
                 showToast(form.isValid() ? "This field is valid" : "This field is not valid");
             }
         });
+
+        btn_test.setClickedListener(listener -> present(new TestAbilitySlice(), new Intent()));
     }
 
     private void showToast(String msg){

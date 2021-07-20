@@ -80,7 +80,7 @@ public class ValiFieldText extends ValiFieldBase<String> {
 	}
 
 	/**
-	 * Validates any pattern specified with parameter
+	 * Validates any pattern specified wi0th parameter
 	 *
 	 * @param errorMessage specifies error message to be shown
 	 * @param pattern validates this pattern
