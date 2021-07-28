@@ -18,7 +18,7 @@ public class ValiFi {
 	static String TAG = ValiFi.class.getSimpleName();
 //	@SuppressLint("StaticFieldLeak")
 	private static ValiFi ourInstance;
-	final ValiFiConfig mParameters;
+	public final ValiFiConfig mParameters;
 	private final Context mAppContext;
 
 	/**
@@ -105,7 +105,7 @@ public class ValiFi {
 		return getInstance().mParameters.mAsyncValidationDelay;
 	}
 
-	static ValiFi getInstance() {
+	public static ValiFi getInstance() {
 		if (ourInstance == null) {
 			throw new ValiFiException("ValiFi must be installed in Application.onCreate()!");
 		}
@@ -134,8 +134,8 @@ public class ValiFi {
 	 * Should be built by {@link Builder}
 	 */
 	public static class ValiFiConfig {
-		final int[] mErrorResources;
-		final ValiFieldBase.PropertyValidator<String>[] mValidators;
+		public final int[] mErrorResources;
+		public final ValiFieldBase.PropertyValidator<String>[] mValidators;
 		final long mErrorDelay;
 		final long mAsyncValidationDelay;
 		final Set<ValiFiCardType> mKnownCardTypes;

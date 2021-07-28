@@ -7,9 +7,6 @@ ohos {
         compatibleSdkVersion 5
     }
     buildTypes {
-        debug {
-            dataBindingEnabled true
-        }
         release {
             proguardOpt {
                 proguardEnabled false
@@ -23,6 +20,7 @@ ohos {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
     implementation project(path: ':valifilib')
+    implementation 'org.jetbrains:annotations:19.0.0'
 //    implementation project(":valifilib")
     testImplementation 'junit:junit:4.13'
     ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'

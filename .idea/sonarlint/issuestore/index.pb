@@ -15,3 +15,13 @@ w
 Gvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldEmail.java,8\f\8fdf6f14758fbeefb20994c2c10df1d4545fe224
 m
 =entry/src/main/java/com/applib/libraryvalifi/MainAbility.java,a\d\addf4d3c9233ca1672a30461dcd47c6e6c8b79f5
+J
+entry/src/main/config.json,1\0\10f965cf51fe14a5ef0ca2ebefb1bd7e4607eeb2
+x
+Hentry/src/main/java/com/applib/libraryvalifi/slice/MainAbilitySlice.java,4\9\4947d1d8e1fdbebdb70426fa163274d70b9a8305
+x
+Hentry/src/main/java/com/applib/libraryvalifi/slice/TestAbilitySlice.java,6\2\62a15f000e262c05854caaadb9802d4bc670e680
+v
+Fvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldDate.java,d\f\dfef20a9f7c9cfcc0628d2dd958b0316c6ed8b52
+v
+Fvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldText.java,5\a\5ad2195fa167ee3bc4a6a19ddc687b637f4974f7

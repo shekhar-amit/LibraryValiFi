@@ -40,7 +40,7 @@ public class ValiFieldCard extends ValiFieldLong {
 	 * @param value must be number
 	 * @return whether specified card if valid or not
 	 */
-	protected static boolean isLuhnTestValid(@NotNull String value) {
+	public static boolean isLuhnTestValid(@NotNull String value) {
 		int sum = 0;
 		for (int i = value.length() - 1; i >= 0; i--) {
 			int digit = Character.getNumericValue(value.charAt(i)) * POSITION_WEIGHT[(value.length() - i) % 2];

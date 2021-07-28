@@ -266,6 +266,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		mInProgress = false;
 		mIsChanged = false;
 
+		mTextField.setText("");
 		setValue("");
 //		notifyValidationChanged();
 		refreshError();
@@ -469,6 +470,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 			@Override
 			public boolean isValid(@Nullable ValueType value) {
 				ValueType fieldVal = targetField.get();
+//				System.out.println("AMIT : value |"+value+"| second value |"+fieldVal+"|");
 				return (value == targetField.get()) || (value != null && value.equals(fieldVal));
 			}
 		});
@@ -606,7 +608,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		mBoundFields.add(field);
 	}
 
-	protected int getErrorRes(ValiFi.Builder.ERROR_RES field) {
+	public int getErrorRes(ValiFi.Builder.ERROR_RES field) {
 		return ValiFi.getErrorRes(field);
 	}
 
