@@ -319,12 +319,7 @@ public class ValiFi {
          * @return builder for chaining
          */
         public Builder setPattern(PATTERN field, final Pattern pattern) {
-            return setValidator(field, new ValiFieldBase.PropertyValidator<String>() {
-                @Override
-                public boolean isValid(@Nullable String value) {
-                    return value != null && pattern.matcher(value).matches();
-                }
-            });
+            return setValidator(field, value -> value != null && pattern.matcher(value).matches());
         }
 
         /**

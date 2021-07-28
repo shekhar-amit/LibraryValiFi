@@ -7,8 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class ValiFiTest {
     public static final String FIELD_ERROR_MSG = "field is not valid";
@@ -34,13 +33,17 @@ public class ValiFiTest {
 
     @Test
     public void checkLibraryInstalledByAddingValidator() {
-        mField.addCustomValidator(ResourceTable.String_validation_error_email, new ValiFieldBase.PropertyValidator<String>() {
-            @Override
-            public boolean isValid(@Nullable String value) {
-                // it doesn't matter if it's valid, checking installation
-                return false;
-            }
-        });
+        try {
+            mField.addCustomValidator(ResourceTable.String_validation_error_email, new ValiFieldBase.PropertyValidator<String>() {
+                @Override
+                public boolean isValid(@Nullable String value) {
+                    // it doesn't matter if it's valid, checking installation
+                    return false;
+                }
+            });
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test

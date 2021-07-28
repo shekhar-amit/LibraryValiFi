@@ -76,12 +76,7 @@ public class MainAbilitySlice extends AbilitySlice {
 
         form.init();
 
-        btn_submit.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                showToast(form.isValid() ? "This field is valid" : "This field is not valid");
-            }
-        });
+        btn_submit.setClickedListener(component -> showToast(form.isValid() ? "This field is valid" : "This field is not valid"));
 
         btn_test.setClickedListener(listener -> present(new TestAbilitySlice(), new Intent()));
     }

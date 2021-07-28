@@ -41,7 +41,6 @@ public class ValiFiForm implements ValiFiValidable {
 
     @Override
     public void init() {
-        System.out.println("AMIT : INIT FORM");
         for (ValiFiValidable field : mFields) {
             field.init();
         }

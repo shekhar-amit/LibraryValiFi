@@ -103,12 +103,7 @@ public class TestAbilitySlice extends AbilitySlice {
 
         form.init();
 
-        btn_submit2.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                showToast(form.isValid() ? "This field is valid" : "This field is not valid");
-            }
-        });
+        btn_submit2.setClickedListener(component -> showToast(form.isValid() ? "This field is valid" : "This field is not valid"));
 
         setupNumberValidator();
     }
