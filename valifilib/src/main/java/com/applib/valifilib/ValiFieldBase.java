@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Base class for validation field. Holds value change listener and basic rules for validation.
@@ -43,13 +40,9 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	volatile long mDueTime = -1;
 	volatile boolean mLastIsError = true;
 	volatile boolean mIsError = false;
-//	@Nullable Runnable mAsyncValidationRunnable;
 	// --- others
 	boolean mIsResetting = false;
 	@Nullable private ValiFiForm mParentForm;
-//	@Nullable private ScheduledExecutorService mScheduler;
-//	protected OnPropertyChangedCallback mCallback = setupOnPropertyChangedCallback();
-//	final Runnable mNotifyErrorRunnable = setupNotifyErrorRunnable();
 	protected TextField mTextField;
 	protected Text mErrorText;
 
@@ -115,19 +108,7 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		if (defaultValue != null && markAsChanged) {
 			mIsChanged = true;
 		}
-//		addOnPropertyChangedCallback(mCallback);
 	}
-//
-//	/**
-//	 * Error binding for TextInputLayout
-//	 *
-//	 * @param view TextInputLayout to be set with
-//	 * @param errorMessage error message to show
-//	 */
-//	@BindingAdapter("error")
-//	public static void setError(TextInputLayout view, String errorMessage) {
-//		view.setHint(errorMessage);
-//	}
 
 	/**
 	 * Error binding for EditText
@@ -135,7 +116,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 * @param view EditText to be set with
 	 * @param errorMessage error message to show
 	 */
-//	@BindingAdapter("error")
 	public static void setError(TextField view, String errorMessage) {
 		view.setHint(errorMessage);
 	}
@@ -187,7 +167,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 *
 	 * @return if property was changed, is not in progress, and is valid
 	 */
-//	@Bindable
 	@Override
 	public boolean isValid() {
 		if(mTextField==null) return false;
@@ -231,8 +210,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 * Removes property change callback and clears custom validators
 	 */
 	public void destroy() {
-//		shutdownScheduler();
-//		removeOnPropertyChangedCallback(mCallback);
 
 		if (mPropertyValidators != null) {
 			mPropertyValidators.clear();
@@ -268,7 +245,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 
 		mTextField.setText("");
 		setValue("");
-//		notifyValidationChanged();
 		refreshError();
 		mIsResetting = false;
 	}
@@ -278,7 +254,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 */
 	@Override
 	public void validate() {
-//		notifyValueChanged(true);
 		refreshError();
 	}
 
@@ -356,7 +331,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		if ((value == mValue) || (value != null && value.equals(mValue))) return;
 
 		mValue = value;
-//		notifyValueChanged(false);
 	}
 
 	/**
@@ -365,7 +339,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 * @return value in string displayable in TextInputLayout/EditText
 	 */
 	@Nullable
-//	@Bindable
 	public String getValue() {
 		if (mValue == null) return null;
 		return convertValueToString(mValue);
@@ -386,7 +359,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 *
 	 * @return whether validation in progress
 	 */
-//	@Bindable
 	public boolean isInProgress() {
 		return mInProgress;
 	}
@@ -401,8 +373,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		if (inProgress == mInProgress) return;
 
 		mInProgress = inProgress;
-//		notifyPropertyChanged(com.applib.valifi.BR.inProgress);
-//		notifyValidationChanged();
 	}
 
 	/**
@@ -429,7 +399,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	}
 
 	@Nullable
-//	@Bindable
 	public String getError() {
 		return mError;
 	}
@@ -470,7 +439,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 			@Override
 			public boolean isValid(@Nullable ValueType value) {
 				ValueType fieldVal = targetField.get();
-//				System.out.println("AMIT : value |"+value+"| second value |"+fieldVal+"|");
 				return (value == targetField.get()) || (value != null && value.equals(fieldVal));
 			}
 		});
@@ -513,9 +481,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 */
 	public ValiFieldBase<ValueType> addCustomValidator(String errorMessage, PropertyValidator<ValueType> validator) {
 		mPropertyValidators.put(validator, errorMessage);
-//		if (mIsChanged) {
-//			notifyValueChanged(true);
-//		}
 		return this;
 	}
 
@@ -568,9 +533,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		}
 
 		mAsyncPropertyValidators.put(validator, errorMessage);
-//		if (mIsChanged) {
-//			notifyValueChanged(true);
-//		}
 		return this;
 	}
 
@@ -593,7 +555,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 	 */
 	@Override
 	public void refreshError() {
-//		notifyPropertyChanged(com.applib.valifi.BR.error);
 	}
 
 	/**
@@ -612,9 +573,6 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		return ValiFi.getErrorRes(field);
 	}
 
-//	protected PropertyValidator<String> getValidator(@ValiFi.Builder.ValiFiPattern int field) {
-//		return ValiFi.getValidator(field);
-//	}
 
 	protected PropertyValidator<String> getValidator(ValiFi.Builder.PATTERN field) {
 		return ValiFi.getValidator(field);
@@ -641,81 +599,15 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		mIsChanged = true;
 		mIsError = isError;
 		mError = errorMessage;
-//		notifyValidationChanged();
 
 		// Notifies that error message changed
 		if (mErrorDelay != ValiFiErrorDelay.NEVER.delayMillis) {
 			if (mErrorDelay > 0) {
 				mDueTime = System.currentTimeMillis() + mErrorDelay;
 			}
-//			mNotifyErrorRunnable.run();
 		}
 	}
 
-//	/**
-//	 * Notifies that value changed (internally)
-//	 *
-//	 * @param isImmediate if true, does not call binding notifier
-//	 */
-//	protected void notifyValueChanged(boolean isImmediate) {
-//		if (isImmediate) {
-//			// shortcut to just call the callback
-////			mCallback.onPropertyChanged(null, com.applib.valifi.BR.value);
-//		} else {
-////			notifyPropertyChanged(com.applib.valifi.BR.value);
-//		}
-//	}
-//
-//	/**
-//	 * Notifies that field's validation flag changed
-//	 */
-//	protected void notifyValidationChanged() {
-////		notifyPropertyChanged(com.applib.valifi.BR.valid);
-//		if (mParentForm != null) {
-//			mParentForm.notifyValidationChanged(this);
-//		}
-//	}
-//
-//	/**
-//	 * Notifies bound fields about value change
-//	 */
-//	void notifyBoundFieldsValueChanged() {
-//		if (mBoundFields == null) return;
-//
-//		for (ValiFieldBase field : mBoundFields) {
-//			if (!field.mIsChanged) continue;    // notifies only changed items
-//			field.notifyValueChanged(true);
-//		}
-//	}
-//
-//	synchronized ScheduledExecutorService getScheduler() {
-//		if (mScheduler == null) {
-//			mScheduler = Executors.newSingleThreadScheduledExecutor();
-//		}
-//
-//		return mScheduler;
-//	}
-//
-//	synchronized void shutdownScheduler() {
-//		if (mScheduler == null) return;
-//
-//		mScheduler.shutdownNow();
-//	}
-//
-//	synchronized void cancelAndSetTask(@Nullable ScheduledFuture<?> task) {
-//		if (mLastTask != null) {
-//			mLastTask.cancel(true);
-//		}
-//		mLastTask = task;
-//	}
-//
-//	synchronized void cancelAndSetValidationTask(@Nullable ScheduledFuture<?> task) {
-//		if (mLastValidationFuture != null) {
-//			mLastValidationFuture.cancel(true);
-//		}
-//		mLastValidationFuture = task;
-//	}
-//
 	/**
 	 * Checks synchronous validators one by one and sets error to the field if any of them is invalid
 	 *
@@ -734,116 +626,5 @@ public abstract class ValiFieldBase<ValueType> implements ValiFiValidable {
 		setIsError(false, null);
 		return true;
 	}
-//
-//	/**
-//	 * Checks asynchronously all async validators and sets error to the field if any of them is invalid
-//	 */
-//	void checkAsyncValidatorsIfAny() {
-//		if (mAsyncPropertyValidators == null || mAsyncPropertyValidators.isEmpty()) {
-//			setInProgress(false);
-//			return;
-//		}
-//
-//		if (mAsyncValidationRunnable == null) {
-//			mAsyncValidationRunnable = new Runnable() {
-//				@Override
-//				public void run() {
-//					setInProgress(true);
-//					// checking all set validators
-//					for (Map.Entry<AsyncPropertyValidator<ValueType>, String> entry : mAsyncPropertyValidators.entrySet()) {
-//						// all of setup validators must be valid, otherwise error
-//						try {
-//							if (!entry.getKey().isValid(mValue)) {
-//								setIsError(true, entry.getValue());
-//								setInProgress(false);
-//								return;
-//							}
-//						} catch (InterruptedException e) {
-//							// interruption should be called only when another task will be running
-//							// it will keep the progress and won't show any error
-//							return;
-//						}
-//					}
-//
-//					// set valid
-//					setIsError(false, null);
-//					setInProgress(false);
-//				}
-//			};
-//		}
-//
-//		// validate asynchronous validators (if any)
-//		cancelAndSetValidationTask(getScheduler().schedule(mAsyncValidationRunnable, mAsyncValidationDelay, TimeUnit.MILLISECONDS));
-//	}
-//
-//	/**
-//	 * Runnable for showing errors.
-//	 * May be delayed after user stops typing
-//	 *
-//	 * @return runnable because of thread executor
-//	 */
-//	@SuppressWarnings("StringEquality")
-//	private Runnable setupNotifyErrorRunnable() {
-//		return new Runnable() {
-//			@Override
-//			public void run() {
-//				// if error delay not set, don't schedule
-//				long remainingDelay = mErrorDelay > 0 ? mDueTime - System.currentTimeMillis() : 0;
-//				// errors are not the same (checking references, not content)
-//				boolean isErrorDifferent = (mLastError != null && mError != null && mLastError != mError);
-//				// validation changed from valid -> invalid or vice versa
-//				if (remainingDelay > 0 && mLastIsError == mIsError && !isErrorDifferent) {
-//					cancelAndSetTask(getScheduler().schedule(mNotifyErrorRunnable, remainingDelay, TimeUnit.MILLISECONDS));
-//				} else {
-//					mDueTime = -1;
-//					refreshError();
-//					cancelAndSetTask(null);
-//				}
-//
-//				mLastError = mError;
-//				mLastIsError = mIsError;
-//			}
-//		};
-//	}
-//
-//	/**
-//	 * Core of all validations.
-//	 * Called when value changed (from layout or by notifyPropertyChanged)
-//	 * 1) notifies bound fields (e.g. when verifying fields)
-//	 * 2) checks if value can be empty
-//	 * 3) validates all attached blocking validators
-//	 * 4) validates attached asynchronous validators
-//	 *
-//	 * @return property changed callback which should be set as field
-//	 */
-//	private OnPropertyChangedCallback setupOnPropertyChangedCallback() {
-//		return new OnPropertyChangedCallback() {
-//			@Override
-//			public void onPropertyChanged(Observable observable, int brId) {
-////				if (brId != com.applib.valifi.BR.value || mIsResetting) return;
-//
-//				// ad 1) notifying bound fields
-//				notifyBoundFieldsValueChanged();
-//
-//				// ad 2) checking if value can be empty
-//				if (mIsEmptyAllowed && (mValue == null || whenThisFieldIsEmpty(mValue))) {
-//					setIsError(false, null);
-//					return;
-//				}
-//
-//				cancelAndSetValidationTask(null);
-//				setInProgress(true);
-//
-//				// ad 3) validating synchronous validators
-//				if (!checkBlockingValidators()) {
-//					setInProgress(false);
-//					cancelAndSetValidationTask(null);
-//					return;
-//				}
-//
-//				// ad 4) validating asynchronous validators
-//				checkAsyncValidatorsIfAny();
-//			}
-//		};
-//	}
+
 }

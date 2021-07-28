@@ -1,12 +1,15 @@
 package com.applib.valifilib;
 
+/**
+ * ValiFiErrorDelay class.
+ */
 public enum ValiFiErrorDelay {
-	IMMEDIATE(0),
-	NEVER(-1);
+    IMMEDIATE(0),
+    NEVER(-1);
 
-	public final int delayMillis;
+    public final int delayMillis;
 
-	ValiFiErrorDelay(int delayMillis) {
-		this.delayMillis = delayMillis;
-	}
+    ValiFiErrorDelay(int delayMillis) {
+        this.delayMillis = delayMillis;
+    }
 }

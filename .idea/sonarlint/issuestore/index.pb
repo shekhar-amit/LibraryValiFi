@@ -1,27 +1,3 @@
 
-z
-Jvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldPassword.java,a\3\a342de3b9bf8fe8b9bb50b57f032a18789de49e8
-q
-Avalifilib/src/main/java/com/applib/valifilib/ValiFiValidable.java,c\8\c87621aa989beca86e75290a37b440a0f0bc29ed
-o
-?entry/src/main/java/com/applib/libraryvalifi/MyApplication.java,8\3\83a44bda3380717f9d1aad6e0fb044b1ce655d37
-z
-Jvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldUsername.java,8\4\84079b45f626fcbb75dc20d304d05d73208bf646
-m
-=entry/src/main/java/com/applib/libraryvalifi/TestAbility.java,9\d\9d2922c81e6fd7f3425d3bbfb999cf74de137cee
-l
-<valifilib/src/main/java/com/applib/valifilib/ValiFiForm.java,2\a\2a796b46d9c8a81b6f5feafbb1817682f6896ed4
-w
-Gvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldEmail.java,8\f\8fdf6f14758fbeefb20994c2c10df1d4545fe224
-m
-=entry/src/main/java/com/applib/libraryvalifi/MainAbility.java,a\d\addf4d3c9233ca1672a30461dcd47c6e6c8b79f5
 J
 entry/src/main/config.json,1\0\10f965cf51fe14a5ef0ca2ebefb1bd7e4607eeb2
-x
-Hentry/src/main/java/com/applib/libraryvalifi/slice/MainAbilitySlice.java,4\9\4947d1d8e1fdbebdb70426fa163274d70b9a8305
-x
-Hentry/src/main/java/com/applib/libraryvalifi/slice/TestAbilitySlice.java,6\2\62a15f000e262c05854caaadb9802d4bc670e680
-v
-Fvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldDate.java,d\f\dfef20a9f7c9cfcc0628d2dd958b0316c6ed8b52
-v
-Fvalifilib/src/main/java/com/applib/valifilib/fields/ValiFieldText.java,5\a\5ad2195fa167ee3bc4a6a19ddc687b637f4974f7

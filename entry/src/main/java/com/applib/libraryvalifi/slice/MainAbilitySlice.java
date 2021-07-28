@@ -16,6 +16,9 @@ import ohos.agp.window.dialog.ToastDialog;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 
+/**
+ * Main Ability Slice of sample app.
+ */
 public class MainAbilitySlice extends AbilitySlice {
 
     TextField tf_email;
@@ -83,7 +86,7 @@ public class MainAbilitySlice extends AbilitySlice {
         btn_test.setClickedListener(listener -> present(new TestAbilitySlice(), new Intent()));
     }
 
-    private void showToast(String msg){
+    private void showToast(String msg) {
         new ToastDialog(this).setDuration(1000).setText(msg).show();
     }
 
